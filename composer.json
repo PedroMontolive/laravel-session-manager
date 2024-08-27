@@ -1,7 +1,7 @@
 {
     "name": "pemto/laravel-session-manager",
-    "type": "library",
     "description": "Session management for laravel 11.0 and up",
+    "type": "library",
     "keywords": [
         "laravel",
         "session",
@@ -9,6 +9,17 @@
         "pemto"
     ],
     "license": "MIT",
+    "homepage": "https://github.com/PedroMontolive/laravel-session-manager",
+    "support": {
+        "issues": "https://github.com/PedroMontolive/laravel-session-manager/issues",
+        "source": "https://github.com/PedroMontolive/laravel-session-manager"
+    },
+    "authors": [
+        {
+            "name": "PedroMontolive",
+            "email": "pedro.montolive@gmail.com"
+        }
+    ],
     "require": {
         "php": ">=8.2"
     },
@@ -30,11 +41,5 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "authors": [
-        {
-            "name": "PedroMontolive",
-            "email": "pedro.montolive@gmail.com"
-        }
-    ]
+    "prefer-stable": true
 }
