@@ -34,10 +34,26 @@ class InstallCommand extends Command
         $this->components->info('Publishing SessionManager Service Provider...');
 
         collect([
+            'Migration' => fn () => $this->callSilent('vendor:publish', ['--tag' => 'session-manager-migrations']) == 0,
             'Configuration' => fn () => $this->callSilent('vendor:publish', ['--tag' => 'session-manager-config']) == 0,
         ])->each(fn ($task, $description) => $this->components->task($description, $task));
 
+        $this->configureSession();
+
         $this->components->info('SessionManager installed successfully.');
+    }
+
+    /**
+     * Configure the session driver for Jetstream.
+     *
+     * @return void
+     */
+    protected function configureSession()
+    {
+        $this->replaceInFile('SESSION_DRIVER=cookie', 'SESSION_DRIVER=database', base_path('.env'));
+        $this->replaceInFile('SESSION_DRIVER=redis', 'SESSION_DRIVER=database', base_path('.env'));
+        $this->replaceInFile('SESSION_DRIVER=cookie', 'SESSION_DRIVER=database', base_path('.env.example'));
+        $this->replaceInFile('SESSION_DRIVER=redis', 'SESSION_DRIVER=database', base_path('.env.example'));
     }
 
 }

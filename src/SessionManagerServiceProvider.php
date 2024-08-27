@@ -24,10 +24,14 @@ class SessionManagerServiceProvider extends ServiceProvider
      */
     protected function offerPublishing()
     {
+        $date = date('Y_m_d_') . time() . '_';
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/session-manager.php' => config_path('session-manager.php'),
             ], 'session-manager-config');
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_sessions_table.php' => database_path('migrations/'. $date .'create_sessions_table.php'),
+            ], 'session-manager-migrations');
         }
     }
 
@@ -45,15 +49,16 @@ class SessionManagerServiceProvider extends ServiceProvider
         }
     }
 
-     /**
-     * Setup the configuration for session-manager.
-     *
-     * @return void
-     */
+    /**
+    * Setup the configuration for session-manager.
+    *
+    * @return void
+    */
     protected function configure()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/session-manager.php', 'session-manager'
+            __DIR__.'/../config/session-manager.php',
+            'session-manager'
         );
     }
 
