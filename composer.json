@@ -21,7 +21,14 @@
         }
     ],
     "require": {
-        "php": ">=8.2"
+        "php": ">=8.2",
+        "illuminate/database": "^11.21",
+        "illuminate/support": "^11.21",
+        "ramsey/uuid": "^4.7",
+        "symfony/console": "^7.1",
+        "symfony/process": "^7.1",
+        "symfony/error-handler": "^7.1",
+        "illuminate/contracts": "^11.21"
     },
     "autoload": {
         "psr-4": {
