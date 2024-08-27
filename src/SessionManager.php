@@ -43,7 +43,7 @@ class SessionManager
 
     }
 
-    public static testFunction(){
+    public static function testFunction(){
         dd('test');
     }
 }
