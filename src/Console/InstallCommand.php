@@ -36,9 +36,8 @@ class InstallCommand extends Command
         collect([
             'Migration' => fn () => $this->callSilent('vendor:publish', ['--tag' => 'session-manager-migrations']) == 0,
             'Configuration' => fn () => $this->callSilent('vendor:publish', ['--tag' => 'session-manager-config']) == 0,
+            'Environment' => fn () => $this->configureSession(),
         ])->each(fn ($task, $description) => $this->components->task($description, $task));
-
-        $this->configureSession();
 
         $this->components->info('SessionManager installed successfully.');
     }
