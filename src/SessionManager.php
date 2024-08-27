@@ -18,7 +18,7 @@ class SessionManager
         if (config('session.driver') !== 'database') {
             return collect();
         }
-2023_11_29_191739_
+
         return collect(
             DB::connection(config('session.connection'))->table(config('session.table', 'sessions'))
                     ->where('guard', $guard)
