@@ -75,8 +75,6 @@ class InstallCommand extends Command
             $contents = str_replace($search, $replace, $contents);
             file_put_contents($path, $contents);
             $this->components->info("Updated '$search' to '$replace' in $path.");
-        } else {
-            $this->components->info("No occurrence of '$search' found in $path.");
         }
     }
 }

@@ -13,7 +13,7 @@ class SessionManager
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Support\Collection
      */
-    public function getSessions(Request $request, $guard)
+    public static function getSessions(Request $request, $guard)
     {
         if (config('session.driver') !== 'database') {
             return collect();
@@ -41,5 +41,9 @@ class SessionManager
             ];
         });
 
+    }
+
+    public static testFunction(){
+        dd('test');
     }
 }

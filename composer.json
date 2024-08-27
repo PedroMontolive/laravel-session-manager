@@ -44,7 +44,10 @@
         "laravel": {
             "providers": [
                 "Pemto\\SessionManager\\SessionManagerServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "SessionManager": "Pemto\\SessionManager\\SessionManager"
+            }
         }
     },
     "config": {
