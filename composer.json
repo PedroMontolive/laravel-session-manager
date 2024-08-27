@@ -1,0 +1,14 @@
+{
+    "name": "pemto/laravel-session-manager",
+    "description": "Session management for laravel 11.0 and up",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PedroMontolive",
+            "email": "pedro.montolive@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
