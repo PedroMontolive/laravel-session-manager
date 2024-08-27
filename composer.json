@@ -41,9 +41,6 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-master": "development"
-        },
         "laravel": {
             "providers": [
                 "Pemto\\SessionManager\\SessionManagerServiceProvider"
