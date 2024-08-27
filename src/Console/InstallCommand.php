@@ -56,4 +56,28 @@ class InstallCommand extends Command
         $this->replaceInFile('SESSION_DRIVER=redis', 'SESSION_DRIVER=database', base_path('.env.example'));
     }
 
+    /**
+     * Replace a given string in a file.
+     *
+     * @param  string  $search
+     * @param  string  $replace
+     * @param  string  $path
+     * @return void
+     */
+    protected function replaceInFile($search, $replace, $path)
+    {
+        if (!file_exists($path)) {
+            $this->components->error("File does not exist: $path");
+            return;
+        }
+
+        $contents = file_get_contents($path);
+        if (str_contains($contents, $search)) {
+            $contents = str_replace($search, $replace, $contents);
+            file_put_contents($path, $contents);
+            $this->components->info("Updated '$search' to '$replace' in $path.");
+        } else {
+            $this->components->info("No occurrence of '$search' found in $path.");
+        }
+    }
 }
