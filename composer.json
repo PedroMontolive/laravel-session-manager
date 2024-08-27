@@ -1,16 +1,40 @@
 {
     "name": "pemto/laravel-session-manager",
-    "description": "Session management for laravel 11.0 and up",
     "type": "library",
+    "description": "Session management for laravel 11.0 and up",
+    "keywords": [
+        "laravel",
+        "session",
+        "manager",
+        "pemto"
+    ],
     "license": "MIT",
+    "require": {
+        "php": ">=8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pemto\\SessionManager\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "authors": [
         {
             "name": "PedroMontolive",
             "email": "pedro.montolive@gmail.com"
         }
-    ],
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=8.2"
-    }
+    ]
 }
