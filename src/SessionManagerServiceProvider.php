@@ -1,6 +1,6 @@
 <?php
 
-namespace Pemton\SessionManager;
+namespace Pemto\SessionManager;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,4 +29,17 @@ class SessionManagerServiceProvider extends ServiceProvider
             ]);
         }
     }
+
+     /**
+     * Setup the configuration for session-manager.
+     *
+     * @return void
+     */
+    protected function configure()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/session-manager.php', 'session-manager'
+        );
+    }
+
 }

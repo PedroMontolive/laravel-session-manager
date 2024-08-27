@@ -40,6 +40,16 @@
             "Tests\\": "tests/"
         }
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "development"
+        },
+        "laravel": {
+            "providers": [
+                "Pemto\\SessionManager\\SessionManagerServiceProvider"
+            ]
+        }
+    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
