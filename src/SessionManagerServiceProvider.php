@@ -13,7 +13,22 @@ class SessionManagerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->offerPublishing();
         $this->registerCommands();
+    }
+
+    /**
+     * Setup the resource publishing groups for Horizon.
+     *
+     * @return void
+     */
+    protected function offerPublishing()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/session-manager.php' => config_path('session-manager.php'),
+            ], 'session-manager-config');
+        }
     }
 
     /**
