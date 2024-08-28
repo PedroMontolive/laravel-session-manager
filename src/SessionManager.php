@@ -4,6 +4,8 @@ namespace Pemto\SessionManager;
 
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class SessionManager
 {
@@ -43,7 +45,30 @@ class SessionManager
 
     }
 
-    public static function testFunction(){
+    /**
+     * Destroy all sessions from user
+     * @param $user_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function destroySession($user_id, $guard)
+    {
+        DB::beginTransaction();
+        try {
+            DB::connection(config('session.connection'))->table(config('session.table', 'sessions'))
+                ->where('guard', $guard)
+                ->where('user_id', $user_id)
+                ->delete();
+            DB::commit();
+            return true;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return false;
+        }
+
+    }
+
+    public static function testFunction()
+    {
         dd('test');
     }
 }
